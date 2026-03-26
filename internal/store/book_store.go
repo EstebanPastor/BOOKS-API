@@ -33,7 +33,7 @@ func (s *store) GetAll() ([]*model.Book, error) {
 
 	var books []*model.Book
 	for rows.Next() {
-		var b *model.Book
+		b := &model.Book{}
 		if err := rows.Scan(&b.ID, &b.Title, &b.Author); err != nil {
 			return nil, err
 		}
@@ -45,13 +45,13 @@ func (s *store) GetAll() ([]*model.Book, error) {
 func (s *store) GetByID(id int) (*model.Book, error) {
 	q := `SELECT id, title, author FROM books WHERE id = ?`
 
-	var b *model.Book
+	b := model.Book{}
 
 	err := s.db.QueryRow(q, id).Scan(&b.ID, &b.Title, &b.Author)
 	if err != nil {
 		return nil, err
 	}
-	return b, nil
+	return &b, nil
 
 }
 
