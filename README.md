@@ -79,6 +79,8 @@ curl http://localhost:8080/books
 No incluye autenticación
 Usa ? como placeholder SQL (compatible con MySQL / SQLite)
 Arquitectura desacoplada mediante interfaces (Store)
+
+
 👨‍💻 Autor
 
 Esteban Pastor
